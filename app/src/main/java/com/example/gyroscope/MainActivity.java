@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @SuppressLint("StaticFieldLeak")
     private void sendDataToServer(float x, float y, float z) {
         // Replace "YOUR_SERVER_URL" with the actual URL of your server
-        String serverUrl = "http://192.168.1.5:5000/gyroscope";
+        String serverUrl = "http://your_server_url/gyroscope";
 
         // JSON payload with gyroscope data
         String jsonData = String.format("{\"x\": %f, \"y\": %f, \"z\": %f}", x, y, z);
