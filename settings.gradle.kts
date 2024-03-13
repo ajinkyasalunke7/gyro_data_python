@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Gyroscope"
-include(":app")
+include(":Gyro Data")

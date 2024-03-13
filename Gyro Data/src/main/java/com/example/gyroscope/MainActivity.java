@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextView gyroscopeTextView;
 
     private Button send;
+
+    private EditText ip;
     private OkHttpClient client = new OkHttpClient(); // Declare OkHttpClient as a class variable
 
     @Override
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         send = findViewById(R.id.send);
+        ip = findViewById(R.id.ip);
 
         gyroscopeTextView = findViewById(R.id.gyroscopeTextView);
 
@@ -99,7 +103,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @SuppressLint("StaticFieldLeak")
     private void sendDataToServer(float x, float y, float z) {
         // Replace "YOUR_SERVER_URL" with the actual URL of your server
-        String serverUrl = "http://your_server_url/gyroscope";
+        String ip_address = ip.getText().toString();
+        String serverUrl = "http://"+ ip_address +":5000/gyroscope";
 
         // JSON payload with gyroscope data
         String jsonData = String.format("{\"x\": %f, \"y\": %f, \"z\": %f}", x, y, z);
