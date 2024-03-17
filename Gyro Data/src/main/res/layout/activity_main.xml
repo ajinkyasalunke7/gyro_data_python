@@ -18,7 +18,13 @@
         android:ems="10"
         android:textColor="@android:color/black"
         android:layout_gravity="center_horizontal"/>
-
+    <CheckBox
+        android:id="@+id/cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continous Sending"
+        android:layout_marginLeft="100dp"
+        />
     <TextView
         android:id="@+id/gyroscopeTextView"
         android:layout_width="wrap_content"

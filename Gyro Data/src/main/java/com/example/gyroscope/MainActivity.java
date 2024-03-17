@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,14 +33,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Button send;
 
     private EditText ip;
+    private CheckBox cb;
     private OkHttpClient client = new OkHttpClient(); // Declare OkHttpClient as a class variable
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         send = findViewById(R.id.send);
         ip = findViewById(R.id.ip);
+        cb = findViewById(R.id.cb);
 
         gyroscopeTextView = findViewById(R.id.gyroscopeTextView);
 
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float x = event.values[0];
             float y = event.values[1];
             float z = event.values[2];
-
+            if(cb.isChecked()) sendDataToServer(x, y, z);
             // Display gyroscope data in your TextView or process it as needed
             gyroscopeTextView.setText("X: " + x + "\nY: " + y + "\nZ: " + z);
 //            sendDataToServer(x, y, z);
